@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
   let q =[];
   mongo.connect("mongodb+srv://dummy:apache200@cluster0-buzwz.mongodb.net/dummy?retryWrites=true&w=majority")
       .then((client) => {
-        client.db().collection('products').find({name: "Asif"}).forEach(items => {
+        client.db().collection('products').find().forEach(items => {
           q.push(items)
           console.log(q)
         }).then((data) => {
@@ -37,6 +37,33 @@ app.get('/', (req, res) => {
   // res.send(q).status(200)
 })
 
+app.get('/name', (req, res) => {
+    let q =[];
+    mongo.connect("mongodb+srv://dummy:apache200@cluster0-buzwz.mongodb.net/dummy?retryWrites=true&w=majority")
+        .then((client) => {
+            client.db().collection('products').find({name: "Asif"}).forEach(items => {
+                q.push(items)
+                console.log(q)
+            }).then((data) => {
+                res.json(q).send();
+            })
+        }).catch(e => console.log('Error'))
+    // res.send(q).status(200)
+})
+
+app.get('/title', (req, res) => {
+    let q =[];
+    mongo.connect("mongodb+srv://dummy:apache200@cluster0-buzwz.mongodb.net/dummy?retryWrites=true&w=majority")
+        .then((client) => {
+            client.db().collection('products').find({title: "Tech Lead"}).forEach(items => {
+                q.push(items)
+                console.log(q)
+            }).then((data) => {
+                res.json(q).send();
+            })
+        }).catch(e => console.log('Error'))
+    // res.send(q).status(200)
+})
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
