@@ -35,6 +35,12 @@ app.get('/', (req, res) => {
         })
       }).catch(e => console.log('Error'))
   // res.send(q).status(200)
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader(
+        'Access-Control-Allow-Methods',
+        'GET,POST,PUT,PATCH,DELETE,OPTIONS'
+    );
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 })
 
 app.get('/name', (req, res) => {
