@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
           q.push(items)
           console.log(q)
         }).then((data) => {
-          res.json(q).send();
+          res.json(q).send().status(200);
         })
       }).catch(e => console.log('Error'))
   // res.send(q).status(200)
@@ -56,7 +56,7 @@ app.get('/name', (req, res) => {
                 q.push(items)
                 console.log(q)
             }).then((data) => {
-                res.json(q).send();
+                res.json(q).send().status(200);
             })
         }).catch(e => console.log('Error'))
     // res.send(q).status(200)
