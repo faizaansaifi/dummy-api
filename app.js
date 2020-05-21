@@ -37,14 +37,14 @@ app.get('/', (req, res) => {
   // res.send(q).status(200)
 })
 
-app.use(function(req, res, next) {
-    // res.setHeader('Access-Control-Allow-Origin', '*');
-    // res.headers(
-    //     'Access-Control-Allow-Methods',
-    //     'GET,POST,PUT,PATCH,DELETE,OPTIONS'
-    // );
-    res.header("Access-Control-Allow-Origin", 'http://localhost:3000');
-    // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+app.use((req, res, next) => {
+    // Set CORS headers so that the React SPA is able to communicate with this server
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader(
+        'Access-Control-Allow-Methods',
+        'GET,POST,PUT,PATCH,DELETE,OPTIONS'
+    );
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
 
